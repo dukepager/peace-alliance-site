@@ -145,18 +145,25 @@ nav {
 /* ── HERO ── */
 .hero {
   position: relative;
-  background: linear-gradient(135deg, #2a1a5e 0%, #3A8FA3 60%, #5b3aa0 100%);
   min-height: 520px;
   display: flex;
   align-items: center;
   overflow: hidden;
 }
-.hero::before {
-  content: '';
+.hero-slides {
   position: absolute;
   inset: 0;
-  background: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1400&q=80') center/cover no-repeat;
-  opacity: 0.18;
+}
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+.hero-slide.active {
+  opacity: 1;
 }
 .hero-overlay {
   position: absolute;
