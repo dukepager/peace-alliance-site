@@ -696,6 +696,26 @@ a { text-decoration: none; color: inherit; }
   .large-name h1 { font-size: 1.5rem; }
 }
 
+/* ── COUNTY GRID ── */
+.county-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem 2rem;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+.county-item {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #2c3e50;
+  padding: 0.75rem 1rem;
+  border-left: 2px solid #2a7c6e;
+  background: #fff;
+  letter-spacing: 0.03em;
+}
+
 /* ── RESPONSIVE 500px ── */
 @media (max-width: 500px) {
   .hero-text h1 { font-size: 2.2rem; }
