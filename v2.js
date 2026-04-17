@@ -33,14 +33,26 @@ function initSlideshow() {
 }
 
 // ── Forms ───────────────────────────────────────
+const CONSULTATION_FORM = 'https://docs.google.com/forms/d/e/1FAIpQLSc_R8uOCjB3hHGyqnS2lszD4lYt2q7Qg5sl0TfFHnsfW-bF2Q/formResponse';
+
 function submitForm(e, type) {
   e.preventDefault();
+  const form = e.target;
   const toast = document.getElementById('toast');
+
+  if (type === 'consultation') {
+    fetch(CONSULTATION_FORM, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: new FormData(form)
+    });
+  }
+
   toast.textContent = type === 'consultation'
     ? '✅ Consultation request sent! We\'ll call you within 24 hours.'
     : '✅ Message sent! We\'ll be in touch soon.';
   toast.classList.add('show');
-  e.target.reset();
+  form.reset();
   setTimeout(() => toast.classList.remove('show'), 4000);
 }
 
