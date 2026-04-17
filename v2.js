@@ -33,32 +33,20 @@ function initSlideshow() {
 }
 
 // ── Forms ───────────────────────────────────────
-const FORM_URLS = {
-  consultation: 'https://docs.google.com/forms/d/e/1FAIpQLSc_R8uOCjB3hHGyqnS2lszD4lYt2q7Qg5sl0TfFHnsfW-bF2Q/formResponse',
-  contact: 'https://docs.google.com/forms/d/e/1FAIpQLSdg3VJS8gswZ-0xoVw5izaG85lBSa0Xe7tfRH-NaH5sGz-lQA/formResponse'
-};
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyk5QRWvB9cUatNm8IrzYfpvjQYhY5tsOeCF1fHtp_dWDScb7G-P2e01oBAQQvwnTZO/exec';
 
 function submitForm(e, type) {
   e.preventDefault();
   const form = e.target;
   const toast = document.getElementById('toast');
+  const data = new FormData(form);
+  data.append('formType', type);
 
-  // Create hidden iframe to receive Google Forms response
-  const iframe = document.createElement('iframe');
-  iframe.name = 'hidden-submit';
-  iframe.style.display = 'none';
-  document.body.appendChild(iframe);
-
-  // Point form to iframe and submit
-  form.action = FORM_URLS[type];
-  form.method = 'POST';
-  form.target = 'hidden-submit';
-  form.submit();
-
-  // Clean up and show toast
-  setTimeout(() => document.body.removeChild(iframe), 3000);
-  form.removeAttribute('action');
-  form.removeAttribute('target');
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: data
+  });
 
   toast.textContent = type === 'consultation'
     ? '✅ Consultation request sent! We\'ll call you within 24 hours.'

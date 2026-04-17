@@ -385,20 +385,20 @@
         <h3>Schedule Your Consultation</h3>
         <form onsubmit="submitForm(event,'consultation')">
           <div class="form-row-v2">
-            <div class="fg"><label>Your Name *</label><input type="text" name="entry.305125935" placeholder="Jane Smith" required /></div>
-            <div class="fg"><label>Phone *</label><input type="tel" name="entry.156789073" placeholder="(478) 000-0000" required /></div>
+            <div class="fg"><label>Your Name *</label><input type="text" name="name" placeholder="Jane Smith" required /></div>
+            <div class="fg"><label>Phone *</label><input type="tel" name="phone" placeholder="(478) 000-0000" required /></div>
           </div>
-          <div class="fg"><label>Email *</label><input type="email" name="entry.365147634" placeholder="you@email.com" required /></div>
+          <div class="fg"><label>Email *</label><input type="email" name="email" placeholder="you@email.com" required /></div>
           <div class="fg"><label>Who needs care?</label>
-            <select name="entry.1653873299"><option>Parent</option><option>Spouse / Partner</option><option>Grandparent</option><option>Myself</option><option>Other</option></select>
+            <select name="who"><option>Parent</option><option>Spouse / Partner</option><option>Grandparent</option><option>Myself</option><option>Other</option></select>
           </div>
           <div class="fg"><label>Type of care needed</label>
-            <select name="entry.1526262524"><option>Daily Living Assistance</option><option>Memory / Dementia Care</option><option>Companion Care</option><option>Skilled Nursing</option><option>Post-Surgery Recovery</option><option>Not Sure Yet</option></select>
+            <select name="care"><option>Daily Living Assistance</option><option>Memory / Dementia Care</option><option>Companion Care</option><option>Skilled Nursing</option><option>Post-Surgery Recovery</option><option>Not Sure Yet</option></select>
           </div>
           <div class="fg"><label>Best time to reach you</label>
-            <select name="entry.1728710725"><option>Morning (8am–12pm)</option><option>Afternoon (12pm–5pm)</option><option>Evening (5pm–8pm)</option><option>Anytime</option></select>
+            <select name="time"><option>Morning (8am–12pm)</option><option>Afternoon (12pm–5pm)</option><option>Evening (5pm–8pm)</option><option>Anytime</option></select>
           </div>
-          <div class="fg"><label>Additional Notes</label><textarea name="entry.641829610" rows="4" placeholder="Tell us about your loved one's situation…"></textarea></div>
+          <div class="fg"><label>Additional Notes</label><textarea name="notes" rows="4" placeholder="Tell us about your loved one's situation…"></textarea></div>
           <button type="submit" class="btn-primary-v2 full">Request My Free Consultation</button>
         </form>
       </div>
@@ -426,14 +426,14 @@
         <h3>Send Us a Message</h3>
         <form onsubmit="submitForm(event,'contact')">
           <div class="form-row-v2">
-            <div class="fg"><label>Name *</label><input type="text" name="entry.1608481624" placeholder="Your full name" required /></div>
-            <div class="fg"><label>Phone</label><input type="tel" name="entry.1666585304" placeholder="(478) 000-0000" /></div>
+            <div class="fg"><label>Name *</label><input type="text" name="name" placeholder="Your full name" required /></div>
+            <div class="fg"><label>Phone</label><input type="tel" name="phone" placeholder="(478) 000-0000" /></div>
           </div>
-          <div class="fg"><label>Email *</label><input type="email" name="entry.1285233694" placeholder="you@email.com" required /></div>
+          <div class="fg"><label>Email *</label><input type="email" name="email" placeholder="you@email.com" required /></div>
           <div class="fg"><label>Subject</label>
-            <select name="entry.1795707230"><option>General Inquiry</option><option>Care Services</option><option>Employment / Careers</option><option>Insurance & Billing</option><option>Schedule a Visit</option></select>
+            <select name="subject"><option>General Inquiry</option><option>Care Services</option><option>Employment / Careers</option><option>Insurance & Billing</option><option>Schedule a Visit</option></select>
           </div>
-          <div class="fg"><label>Message *</label><textarea name="entry.1513653866" rows="5" placeholder="How can we help you?" required></textarea></div>
+          <div class="fg"><label>Message *</label><textarea name="message" rows="5" placeholder="How can we help you?" required></textarea></div>
           <button type="submit" class="btn-primary-v2 full">Send Message</button>
         </form>
       </div>
