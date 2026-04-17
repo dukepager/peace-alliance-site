@@ -43,12 +43,22 @@ function submitForm(e, type) {
   const form = e.target;
   const toast = document.getElementById('toast');
 
-  fetch(FORM_URLS[type], {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(new FormData(form)).toString()
-  });
+  // Create hidden iframe to receive Google Forms response
+  const iframe = document.createElement('iframe');
+  iframe.name = 'hidden-submit';
+  iframe.style.display = 'none';
+  document.body.appendChild(iframe);
+
+  // Point form to iframe and submit
+  form.action = FORM_URLS[type];
+  form.method = 'POST';
+  form.target = 'hidden-submit';
+  form.submit();
+
+  // Clean up and show toast
+  setTimeout(() => document.body.removeChild(iframe), 3000);
+  form.removeAttribute('action');
+  form.removeAttribute('target');
 
   toast.textContent = type === 'consultation'
     ? '✅ Consultation request sent! We\'ll call you within 24 hours.'
