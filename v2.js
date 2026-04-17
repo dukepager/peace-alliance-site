@@ -33,7 +33,7 @@ function initSlideshow() {
 }
 
 // ── Forms ───────────────────────────────────────
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyk5QRWvB9cUatNm8IrzYfpvjQYhY5tsOeCF1fHtp_dWDScb7G-P2e01oBAQQvwnTZO/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxeOTb32XNvuNTZ7dCGirFOoAt8oeI8VQBzu9xoGPVlu3f5t7yYrqsrQb4ckSaCbfPY/exec';
 
 function submitForm(e, type) {
   e.preventDefault();
@@ -43,10 +43,9 @@ function submitForm(e, type) {
   new FormData(form).forEach((val, key) => params.append(key, val));
   params.append('formType', type);
 
-  fetch(SCRIPT_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    body: params
+  fetch(SCRIPT_URL + '?' + params.toString(), {
+    method: 'GET',
+    mode: 'no-cors'
   });
 
   toast.textContent = type === 'consultation'
