@@ -33,20 +33,21 @@ function initSlideshow() {
 }
 
 // ── Forms ───────────────────────────────────────
-const CONSULTATION_FORM = 'https://docs.google.com/forms/d/e/1FAIpQLSc_R8uOCjB3hHGyqnS2lszD4lYt2q7Qg5sl0TfFHnsfW-bF2Q/formResponse';
+const FORM_URLS = {
+  consultation: 'https://docs.google.com/forms/d/e/1FAIpQLSc_R8uOCjB3hHGyqnS2lszD4lYt2q7Qg5sl0TfFHnsfW-bF2Q/formResponse',
+  contact: 'https://docs.google.com/forms/d/e/1FAIpQLSdg3VJS8gswZ-0xoVw5izaG85lBSa0Xe7tfRH-NaH5sGz-lQA/formResponse'
+};
 
 function submitForm(e, type) {
   e.preventDefault();
   const form = e.target;
   const toast = document.getElementById('toast');
 
-  if (type === 'consultation') {
-    fetch(CONSULTATION_FORM, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: new FormData(form)
-    });
-  }
+  fetch(FORM_URLS[type], {
+    method: 'POST',
+    mode: 'no-cors',
+    body: new FormData(form)
+  });
 
   toast.textContent = type === 'consultation'
     ? '✅ Consultation request sent! We\'ll call you within 24 hours.'
