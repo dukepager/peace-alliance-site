@@ -33,19 +33,17 @@ function initSlideshow() {
 }
 
 // ── Forms ───────────────────────────────────────
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxeOTb32XNvuNTZ7dCGirFOoAt8oeI8VQBzu9xoGPVlu3f5t7yYrqsrQb4ckSaCbfPY/exec';
+const FORMSPREE_URL = 'https://formspree.io/f/xzdyrjpy';
 
 function submitForm(e, type) {
   e.preventDefault();
   const form = e.target;
   const toast = document.getElementById('toast');
-  const params = new URLSearchParams();
-  new FormData(form).forEach((val, key) => params.append(key, val));
-  params.append('formType', type);
 
-  fetch(SCRIPT_URL + '?' + params.toString(), {
-    method: 'GET',
-    mode: 'no-cors'
+  fetch(FORMSPREE_URL, {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: new FormData(form)
   });
 
   toast.textContent = type === 'consultation'
