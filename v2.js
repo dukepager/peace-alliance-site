@@ -46,7 +46,8 @@ function submitForm(e, type) {
   fetch(FORM_URLS[type], {
     method: 'POST',
     mode: 'no-cors',
-    body: new FormData(form)
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(new FormData(form)).toString()
   });
 
   toast.textContent = type === 'consultation'
