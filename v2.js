@@ -39,13 +39,14 @@ function submitForm(e, type) {
   e.preventDefault();
   const form = e.target;
   const toast = document.getElementById('toast');
-  const data = new FormData(form);
-  data.append('formType', type);
+  const params = new URLSearchParams();
+  new FormData(form).forEach((val, key) => params.append(key, val));
+  params.append('formType', type);
 
   fetch(SCRIPT_URL, {
     method: 'POST',
     mode: 'no-cors',
-    body: data
+    body: params
   });
 
   toast.textContent = type === 'consultation'
